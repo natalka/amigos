@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151017125527) do
+ActiveRecord::Schema.define(version: 20151017163518) do
 
   create_table "orders", force: :cascade do |t|
     t.string   "status"
@@ -19,9 +19,11 @@ ActiveRecord::Schema.define(version: 20151017125527) do
     t.string   "from"
     t.string   "to"
     t.string   "tracking_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
+    t.string   "geo_latitude"
+    t.string   "geo_longitude"
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"

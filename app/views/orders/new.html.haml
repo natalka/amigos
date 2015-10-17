@@ -1,7 +1,3 @@
-#results
-
 = form_for Order.new do |form|
-  = form.text_field :to, placeholder: 'To', id: 'to_deliver_location'
-  = form.text_field :from, placeholder: 'From'
-  = form.text_area :item_desc, placeholder: 'What'
+  = render 'form', form: form
   = form.submit 'Bring it to me NOW!'
