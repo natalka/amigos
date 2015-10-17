@@ -12,5 +12,37 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
+
+$( document ).ready(function() {
+  nokia.Settings.set("app_id", "i6eH7aQVYK2RFCDfUOA5");
+  nokia.Settings.set("app_code", "R-s0s6ahDxkxOEXxrCzZAw");
+
+  var searchBox = new nokia.places.widgets.SearchBox ({
+    targetNode: 'to_deliver_location',
+    searchCenter: function () {
+      return {
+        latitude: 52.516274,
+        longitude: 13.377678
+      }
+    },
+    onResults: function (data) {
+      renderResults (data);
+    }
+  });
+
+  function renderResults (data) {
+    var previewList = document.getElementById ('results');
+    previewList.innerHTML = '';
+
+    var results = data.results.items;
+
+    for (var i = 0, l = results.length; i < l; i++) {
+      var result = results[i];
+      var resultLi = document.createElement ('li');
+      resultLi.innerHTML = result.title;
+      previewList.appendChild (resultLi);
+    }
+  }
+
+});
