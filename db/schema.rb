@@ -19,11 +19,13 @@ ActiveRecord::Schema.define(version: 20151017163518) do
     t.string   "from"
     t.string   "to"
     t.string   "tracking_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "user_id"
-    t.string   "geo_latitude"
-    t.string   "geo_longitude"
+    t.string   "to_geo_latitude"
+    t.string   "to_geo_longitude"
+    t.string   "from_geo_latitude"
+    t.string   "from_geo_longitude"
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"

@@ -12,37 +12,31 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require typeahead.bundle
 //= require_tree .
 
 $( document ).ready(function() {
-  nokia.Settings.set("app_id", "i6eH7aQVYK2RFCDfUOA5");
-  nokia.Settings.set("app_code", "R-s0s6ahDxkxOEXxrCzZAw");
-
-  var searchBox = new nokia.places.widgets.SearchBox ({
-    targetNode: 'to_deliver_location',
-    searchCenter: function () {
-      return {
-        latitude: 52.516274,
-        longitude: 13.377678
-      }
-    },
-    onResults: function (data) {
-      renderResults (data);
+  var search_fields = $(' #to_deliver, #from_deliver ');
+  var possible_locations = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    remote: {
+      url: '/search.json?location_name=%QUERY',
+      wildcard: '%QUERY'
     }
   });
 
-  function renderResults (data) {
-    var previewList = document.getElementById ('results');
-    previewList.innerHTML = '';
+  search_fields.typeahead(null, {
+    display: 'value',
+    source: possible_locations
+  });
 
-    var results = data.results.items;
-
-    for (var i = 0, l = results.length; i < l; i++) {
-      var result = results[i];
-      var resultLi = document.createElement ('li');
-      resultLi.innerHTML = result.title;
-      previewList.appendChild (resultLi);
-    }
-  }
+  search_fields.bind('typeahead:select', function(ev, query, dataset) {
+    var $element_longitude = $('#'+this.id+'_longitude');
+    var $element_latitude  = $('#'+this.id+'_latitude');
+    // value: "Alexanderstraße, Berlin, Deutschland", latitude: 52.5223299, longitude: 13.41557
+    $element_latitude.val(query.latitude);
+    $element_longitude.val(query.longitude);
+  });
 
 });

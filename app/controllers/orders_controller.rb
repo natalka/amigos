@@ -6,12 +6,12 @@ class OrdersController < ApplicationController
   end
 
   def create
-    Order.create order_params
-    render text: 'Your delivery is registred'
+    @order = Order.create order_params
+    redirect_to order_path(@order.id)
   end
 
   private
   def order_params
-    params.require(:order).permit(:to, :from, :item_desc)
+    params.require(:order).permit(:to, :from, :item_desc, :to_geo_latitude, :to_geo_longitude, :from_geo_latitude, :from_geo_longitude)
   end
 end

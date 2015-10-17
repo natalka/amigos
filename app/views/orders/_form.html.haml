@@ -1,5 +1,9 @@
-= form.text_field :to, placeholder: 'To', id: 'to_deliver_location'
-= form.text_field :from, placeholder: 'From'
+= form.text_field :to, placeholder: 'To', id: 'to_deliver', data: { to_latitude_field: '', to_longitude_field: '' }
+= form.text_field :from, placeholder: 'From', id: 'from_deliver', data: { to_latitude_field: '', to_longitude_field: '' }
 = form.text_area :item_desc, placeholder: 'What'
-= form.hidden_field :geo_latitude
-= form.hidden_field :geo_longitude
+.hidden-fields
+  = form.hidden_field :to_geo_latitude, id: 'to_deliver_latitude'
+  = form.hidden_field :to_geo_longitude, id: 'to_deliver_longitude'
+
+  = form.hidden_field :from_geo_latitude, id: 'from_deliver_latitude'
+  = form.hidden_field :from_geo_longitude, id: 'from_deliver_longitude'
