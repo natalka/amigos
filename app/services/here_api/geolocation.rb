@@ -1,6 +1,4 @@
-require 'excon'
-
-class Geolocation
+class HereApi::Geolocation < HereApi::Base
 
   class << self
     
@@ -12,11 +10,7 @@ class Geolocation
 
     private
     def base_url
-      'http://geocoder.cit.api.here.com/6.2/geocode.json'   
-    end
-
-    def auth_params
-      { app_id: Rails.application.secrets.here_api_id, app_code: Rails.application.secrets.here_api_code }
+      'http://geocoder.cit.api.here.com/6.2/geocode.json'
     end
 
     def results(response)
