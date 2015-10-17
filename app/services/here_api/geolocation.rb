@@ -3,7 +3,7 @@ class HereApi::Geolocation < HereApi::Base
   class << self
     
     def search_options(searchtext)
-      query = { gen: 9, searchtext: searchtext, city: 'Berlin' }.merge( auth_params )
+      query = { gen: 9, searchtext: searchtext, city: 'Berlin', country: 'Germany' }.merge( auth_params )
       connection = Excon.new(base_url)
       possible_places( connection.get(query: query).body )
     end
