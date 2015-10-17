@@ -2,17 +2,24 @@ require 'rails_helper'
 
 describe 'Customer orders a delivery' do
 
-  scenario 'Signed customer orders for a delivery' do
-    visit '/'
+  context '#logged_in' do
+    before(:each) do
+      user = FactoryGirl.create(:user)
+      login_as(user, :scope => :user)
+    end
 
-    click_link 'order'
-    fill_in 'To', with: 'My home'
-    fill_in 'From', with: "Polaca's home"
-    fill_in 'What', with: 'guitar'
+    scenario 'Signed customer orders for a delivery' do
+      visit '/'
 
-    click_button 'Bring it to me NOW!'
+      click_link 'order'
+      fill_in 'To', with: 'My home'
+      fill_in 'From', with: "Polaca's home"
+      fill_in 'What', with: 'guitar'
 
-    expect(page).to have_content('Your delivery is registred')
+      click_button 'Bring it to me NOW!'
+
+      expect(page).to have_content('Your delivery is registred')
+    end
   end
 
 end

@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     Order.create order_params
     render text: 'Your delivery is registred'

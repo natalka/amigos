@@ -1,8 +1,7 @@
 class Order < ActiveRecord::Base
   include AASM
-  field :state
 
-  aasm do
+  aasm column: :status do
     state :new, :initial => true
     state :in_progress
     state :collected
