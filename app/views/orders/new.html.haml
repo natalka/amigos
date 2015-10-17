@@ -1,0 +1,5 @@
+= form_for Order.new do |form|
+  = form.text_field :to, placeholder: 'To'
+  = form.text_field :from, placeholder: 'From'
+  = form.text_area :item_desc, placeholder: 'What'
+  = form.submit 'Bring it to me NOW!'
