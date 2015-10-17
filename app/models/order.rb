@@ -1,4 +1,5 @@
 class Order < ActiveRecord::Base
+  belongs_to :user
   include AASM
 
   aasm column: :status do

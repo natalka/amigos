@@ -4,8 +4,15 @@ describe 'Customer orders a delivery' do
 
   context '#logged_in' do
     before(:each) do
-      user = FactoryGirl.create(:user)
-      login_as(user, :scope => :user)
+      @user = FactoryGirl.create(:user)
+      login_as(@user, :scope => :user)
+    end
+
+    let!(:order) { FactoryGirl.create(:order, user: @user) }
+
+    scenario 'List my orders' do
+      visit '/'
+      expect(page).to have_css('table tr.order')
     end
 
     scenario 'Signed customer orders for a delivery' do
