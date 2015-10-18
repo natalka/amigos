@@ -1,5 +1,10 @@
 class Order < ActiveRecord::Base
   belongs_to :user
+
+  validates :item_desc, presence: true
+  validates :to, presence: true
+  validates :from, presence: true
+
   include AASM
 
   aasm column: :status do

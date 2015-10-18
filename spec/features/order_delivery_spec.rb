@@ -15,7 +15,7 @@ describe 'Customer orders a delivery' do
       expect(page).to have_css('table tr.order')
     end
 
-    scenario 'Signed customer orders for a delivery' do
+    scenario 'customer orders for a delivery' do
       visit '/'
 
       click_link 'order'
@@ -26,6 +26,19 @@ describe 'Customer orders a delivery' do
       click_button 'Bring it to me NOW!'
 
       expect(page).to have_content('Your delivery is registred')
+    end
+    context 'when required fields are not filled in' do
+      scenario 'customer cannot make an order' do
+        visit '/'
+
+        click_link 'order'
+        fill_in 'To', with: 'My home'
+        fill_in 'What', with: 'socks'
+
+        click_button 'Bring it to me NOW!'
+
+        expect(current_path).to eq(orders_path)
+      end
     end
   end
 

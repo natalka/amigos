@@ -6,12 +6,18 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.create order_params
-    redirect_to order_path(@order.id)
+    @order = Order.new order_params
+    if @order.save
+      redirect_to order_path(@order.id)
+    else
+      flash.now[:error] = "Could not save order"
+      render 'new'
+    end
   end
 
   private
   def order_params
-    params.require(:order).permit(:to, :from, :item_desc, :to_geo_latitude, :to_geo_longitude, :from_geo_latitude, :from_geo_longitude)
+    params.require(:order).permit(:to, :from, :item_desc, :to_geo_latitude,
+      :to_geo_longitude, :from_geo_latitude, :from_geo_longitude)
   end
 end
