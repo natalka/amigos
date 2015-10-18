@@ -26,7 +26,7 @@ describe 'Customer orders a delivery' do
 
       click_button 'Bring it to me NOW!'
 
-      expect(page).to have_content('Your delivery is registred')
+      expect(page).to have_content('DeliveryAmigo will be at your door')
     end
 
     context 'when required fields are not filled in' do
