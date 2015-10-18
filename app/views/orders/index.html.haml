@@ -1,13 +1,8 @@
 = link_to 'order', new_order_path
-
-%table
-  %tbody
-    %tr
-      %td Order:
-      %td Status:
-      %td Created_at:
-    - @orders.each do |order|
-      %tr.order
-        %td= order.item_desc
-        %td= order.status
-        %td= order.created_at
+%br
+- if current_user.has_role?(:customer)
+   = "Customer's orders"
+   %br
+   = render 'customer_orders', orders: @orders
+- else
+   = render 'orders_to_deliver', orders: @orders

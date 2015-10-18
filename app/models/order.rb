@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   belongs_to :user
+  belongs_to :deliverer, class_name: "User"
 
   validates :item_desc, presence: true
   validates :to, presence: true

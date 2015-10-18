@@ -2,7 +2,11 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @orders = current_user.orders
+    if current_user.has_role?(:customer)
+      @orders = current_user.orders
+    else
+      @orders = Order.all
+    end
   end
 
   def create
@@ -18,6 +22,6 @@ class OrdersController < ApplicationController
   private
   def order_params
     params.require(:order).permit(:to, :from, :item_desc, :to_geo_latitude,
-      :to_geo_longitude, :from_geo_latitude, :from_geo_longitude)
+      :to_geo_longitude, :from_geo_latitude, :from_geo_longitude, :user_id)
   end
 end

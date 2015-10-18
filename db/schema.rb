@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151017163518) do
+ActiveRecord::Schema.define(version: 20151018093406) do
 
   create_table "orders", force: :cascade do |t|
     t.string   "status"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20151017163518) do
     t.string   "to_geo_longitude"
     t.string   "from_geo_latitude"
     t.string   "from_geo_longitude"
+    t.integer  "deliverer_id"
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"

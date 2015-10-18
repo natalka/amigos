@@ -1,0 +1,11 @@
+%table
+  %tbody
+    %tr
+      %td Order:
+      %td Status:
+      %td Created_at:
+    - orders.each do |order|
+      %tr.order
+        %td= order.item_desc
+        %td= order.status
+        %td= order.created_at

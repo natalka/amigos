@@ -4,7 +4,7 @@ describe 'Customer orders a delivery' do
 
   context '#logged_in' do
     before(:each) do
-      @user = FactoryGirl.create(:user)
+      @user = FactoryGirl.create(:customer)
       login_as(@user, :scope => :user)
     end
 
@@ -27,6 +27,7 @@ describe 'Customer orders a delivery' do
 
       expect(page).to have_content('Your delivery is registred')
     end
+
     context 'when required fields are not filled in' do
       scenario 'customer cannot make an order' do
         visit '/'
