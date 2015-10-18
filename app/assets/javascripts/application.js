@@ -34,9 +34,7 @@ $( document ).ready(function() {
   search_fields.bind('typeahead:select', function(ev, query, dataset) {
     var $element_longitude = $('#'+this.id+'_longitude');
     var $element_latitude  = $('#'+this.id+'_latitude');
-    // value: "Alexanderstraße, Berlin, Deutschland", latitude: 52.5223299, longitude: 13.41557
     $element_latitude.val(query.latitude);
     $element_longitude.val(query.longitude);
   });
-
 });

@@ -27,4 +27,11 @@ class Order < ActiveRecord::Base
     end
 
   end
+
+  def geo_addresses
+    { 
+      waypoint0: "geo!#{to_geo_latitude},#{to_geo_longitude}",
+      waypoint1: "geo!#{from_geo_latitude},#{from_geo_longitude}" 
+    }
+  end
 end

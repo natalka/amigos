@@ -3,12 +3,13 @@ require 'rails_helper'
 describe 'Customer orders a delivery' do
 
   context '#logged_in' do
-    before(:each) do
-      @user = FactoryGirl.create(:customer)
-      login_as(@user, :scope => :user)
-    end
 
-    let!(:order) { FactoryGirl.create(:order, user: @user) }
+    let!(:user)  { FactoryGirl.create(:user) }
+    let!(:order) { FactoryGirl.create(:order, user: user) }
+
+    before(:each) do
+      login_as(user, :scope => :user)
+    end
 
     scenario 'List my orders' do
       visit '/'

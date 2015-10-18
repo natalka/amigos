@@ -8,14 +8,14 @@ describe 'Customer orders a delivery' do
       @deliverer = FactoryGirl.create(:deliverer)
       login_as(@deliverer, :scope => :user)
     end
-  end
 
-  let!(:order) { FactoryGirl.create(:order, user: @user) }
+    let!(:order) { FactoryGirl.create(:order, user: @user) }
 
-  scenario 'List my orders to deliverer' do
-    puts @deliverer.inspect
-    visit '/orders'
-    expect(page).to have_css('table tr.order')
+    scenario 'List my orders to deliverer' do
+      visit '/orders'
+      expect(page).to have_css('table tr.order')
+    end
+    
   end
 
 end

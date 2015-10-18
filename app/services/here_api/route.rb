@@ -1,6 +1,6 @@
 class HereApi::Route < HereApi::Base
-  WAYPOINT0 = "geo!52.518270,13.388644"
-  WAYPOINT1 = "geo!52.548240,13.361007"
+  WAYPOINT0 = "geo!52.51916,13.34542"
+  WAYPOINT1 = "geo!52.50948,13.59148"
 
   class << self
 
