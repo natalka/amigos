@@ -5,6 +5,7 @@ class Order < ActiveRecord::Base
   validates :item_desc, presence: true
   validates :to, presence: true
   validates :from, presence: true
+  # validates :who, presence: true
 
   include AASM
 
@@ -29,9 +30,9 @@ class Order < ActiveRecord::Base
   end
 
   def geo_addresses
-    { 
+    {
       waypoint0: "geo!#{to_geo_latitude},#{to_geo_longitude}",
-      waypoint1: "geo!#{from_geo_latitude},#{from_geo_longitude}" 
+      waypoint1: "geo!#{from_geo_latitude},#{from_geo_longitude}"
     }
   end
 end

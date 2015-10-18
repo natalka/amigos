@@ -1,5 +1,6 @@
 = form.text_field :to, placeholder: 'To', id: 'to_deliver', data: { to_latitude_field: '', to_longitude_field: '' }
 = form.text_field :from, placeholder: 'From', id: 'from_deliver', data: { to_latitude_field: '', to_longitude_field: '' }
+= form.text_field :who, placeholder: 'Who'
 = form.text_area :item_desc, placeholder: 'What'
 .hidden-fields
   = form.hidden_field :to_geo_latitude, id: 'to_deliver_latitude'
