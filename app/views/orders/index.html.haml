@@ -1,10 +1,11 @@
-- if current_user.has_role?(:customer)
-   = link_to 'New Order', new_order_path
-   %br
-   %br
-   %h3 Customer's orders
-   %br
-   = render 'customer_orders', orders: @orders
+- if current_user.has_role?(:deliverer)
+  %h3 Orders to be delivered
+  = render 'orders_to_deliver', orders: @orders
 - else
-   %h3 Orders to be delivered
-   = render 'orders_to_deliver', orders: @orders
+  .button.special.fit.small
+    = link_to 'New Order', new_order_path, :style => "color: white"
+  %br
+  %br
+  %h3 Customer's orders
+  %br
+  = render 'customer_orders', orders: @orders
