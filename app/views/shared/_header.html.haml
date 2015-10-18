@@ -1,0 +1,33 @@
+%header#header
+  %h1
+    %a{:href => "index.html"} DeliveryAmigo
+    by Amigos
+  %nav#nav
+    %ul
+      %li
+        %a{:href => ""} Home
+      %li
+        %a.icon.fa-angle-down{:href => "#"} Layouts
+        %ul
+          %li
+            %a{:href => "generic.html"} Generic
+          %li
+            %a{:href => "contact.html"} Contact
+          %li
+            %a{:href => "elements.html"} Elements
+          %li
+            %a{:href => "#"} Submenu
+            %ul
+              %li
+                %a{:href => "#"} Option One
+              %li
+                %a{:href => "#"} Option Two
+              %li
+                %a{:href => "#"} Option Three
+              %li
+                %a{:href => "#"} Option Four
+      %li
+        - if defined?(current_user)
+          %a.button{:href => "/users/sign_out"} Sign Out
+        - else
+          %a.button{:href => "/users/sign_up"} Sign Up
