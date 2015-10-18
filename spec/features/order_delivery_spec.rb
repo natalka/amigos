@@ -4,7 +4,7 @@ describe 'Customer orders a delivery' do
 
   context '#logged_in' do
 
-    let!(:user)  { FactoryGirl.create(:user) }
+    let!(:user)  { FactoryGirl.create(:customer) }
     let!(:order) { FactoryGirl.create(:order, user: user) }
 
     before(:each) do
@@ -19,7 +19,7 @@ describe 'Customer orders a delivery' do
     scenario 'customer orders for a delivery' do
       visit '/'
 
-      click_link 'order'
+      click_link 'New Order'
       fill_in 'To', with: 'My home'
       fill_in 'From', with: "Polaca's home"
       fill_in 'What', with: 'guitar'
@@ -33,7 +33,7 @@ describe 'Customer orders a delivery' do
       scenario 'customer cannot make an order' do
         visit '/'
 
-        click_link 'order'
+        click_link 'New Order'
         fill_in 'To', with: 'My home'
         fill_in 'What', with: 'socks'
 
