@@ -12,7 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.dropotron.min
+//= require skel.min
+//= require util
+//= require main
 //= require typeahead.bundle
+
 //= require_tree .
 
 $( document ).ready(function() {

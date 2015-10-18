@@ -1,8 +1,10 @@
-= link_to 'order', new_order_path
-%br
 - if current_user.has_role?(:customer)
-   = "Customer's orders"
+   = link_to 'New Order', new_order_path
+   %br
+   %br
+   %h3 Customer's orders
    %br
    = render 'customer_orders', orders: @orders
 - else
+   %h3 Orders to be delivered
    = render 'orders_to_deliver', orders: @orders
